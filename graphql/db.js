@@ -13,3 +13,26 @@ export const getMovies = (limit, rating) => {
     .then((res) => res.json())
     .then((json) => json.data.movies);
 };
+
+export const getMovieById = (id) => {
+  let REQUEST_URL = `https://yts.mx/api/v2/movie_details.json?`;
+
+  if (id) {
+    REQUEST_URL += `movie_id=${id}`;
+  }
+  return fetch(REQUEST_URL)
+    .then((res) => res.json())
+    .then((json) => json.data.movie);
+};
+
+export const suggestion = (id) => {
+  let REQUEST_URL = `https://yts.mx/api/v2/movie_suggestions.json?`;
+
+  if (id) {
+    REQUEST_URL += `movie_id=${id}`;
+  }
+
+  return fetch(REQUEST_URL)
+    .then((res) => res.json())
+    .then((json) => json.data.movies);
+};
